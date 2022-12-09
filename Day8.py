@@ -72,8 +72,7 @@ def Day8_second_half():
 
             offset = 0
             while True:  # left
-                if column - offset - 1 < 0:
-                    break
+                if column - offset - 1 < 0: break
                 offset += 1
                 if array[row][column - offset] >= number:
                     break
@@ -81,8 +80,7 @@ def Day8_second_half():
 
             offset = 0
             while True:  # top
-                if row - offset - 1 < 0:
-                    break
+                if row - offset - 1 < 0: break
                 offset += 1
                 if array[row - offset][column] >= number:
                     break
@@ -90,11 +88,9 @@ def Day8_second_half():
 
             offset = 0
             while True:  # bottom
-                if row + offset + 2 > max_dimension:
-                    break
+                if row + offset + 2 > max_dimension: break
                 offset += 1
-                if array[row + offset][column] >= number:
-                    break
+                if array[row + offset][column] >= number: break
             visible_trees_bottom = offset
 
             temp_result = visible_trees_left * visible_trees_right * visible_trees_top * visible_trees_bottom
