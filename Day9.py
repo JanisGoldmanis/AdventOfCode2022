@@ -104,7 +104,6 @@ def Day9_second_half(debug=False):
                         T[0] += 1
                 else:
                     if abs(H[1] - T[1]) > 1:  # Horizontal
-
                         if H[1] - T[1] < 0:
                             T[1] += -1
                         else:
