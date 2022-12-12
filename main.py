@@ -30,5 +30,5 @@ import Day12
 # Day10.Day10_first_half()
 # Day10.Day10_second_half()
 # Day11.Day11_first_half()
-# Day12.Day12_first_half()
-Day12.Day12_second_half()
+Day12.Day12_first_half()
+# Day12.Day12_second_half()

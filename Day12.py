@@ -1,27 +1,10 @@
 def Day12_first_half():
-    data = [line.rstrip() for line in open('Day12.txt', 'r')]
-    grid = []
-    for line in data:
-        row = []
-        for char in line:
-            row.append(char)
-        grid.append(row)
-    start, end = -1, -1
-    drawing_board = []
-    for i in range(len(grid)):
-        row = []
-        for j in range(len(grid[0])):
-            if grid[i][j] == 'S':
-                start = [i, j]
-            elif grid[i][j] == 'E':
-                end = [i, j]
-            row.append('O')
-        drawing_board.append(row)
+    grid = [list(line.rstrip()) for line in open('Day12.txt', 'r')]
+    start = [[i, j] for i, line in enumerate(grid) for j, char in enumerate(line) if char == 'S'][0]
+    end = [[i, j] for i, line in enumerate(grid) for j, char in enumerate(line) if char == 'E'][0]
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # Right, Left, Down, Up
     visited = [start]
     steps = 1
-    drawing_board[start[0]][start[1]] = 0
-    drawing_board[end[0]][end[1]] = 'E'
     queue = [[start]]
     flag = True
     result = 0
@@ -44,10 +27,10 @@ def Day12_first_half():
                     continue
                 visited.append(new)
                 next_iteration_queue.append(new)
-                drawing_board[new[0]][new[1]] = steps
         queue.append(next_iteration_queue)
         steps += 1
     print(flag, result)
+
 
 def Day12_second_half():
     data = [line.rstrip() for line in open('Day12.txt', 'r')]
@@ -95,5 +78,3 @@ def Day12_second_half():
         queue.append(next_iteration_queue)
         steps += 1
     print(flag, result)
-
-
