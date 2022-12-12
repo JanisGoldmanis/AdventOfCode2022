@@ -13,3 +13,4 @@ def Day11_first_half():
     signal = 1
     instructions_array, triggers = [], [19, 59, 99, 139, 179, 219]
     result = 0
+    #Test
