@@ -15,12 +15,12 @@ def Day12_first_half():
             for pos in directions:
                 new = [origin[0] + pos[0], origin[1] + pos[1]]
                 if new[0] < 0 or new[1] < 0 or new[0] >= len(grid) or new[1] >= len(grid[0]) or new in visited:
-                    continue
+                    continue  # Out of bounds or already visited
                 if grid[origin[0]][origin[1]] != 'S':
                     if ord(grid[new[0]][new[1]]) - ord(grid[origin[0]][origin[1]]) > 1:
-                        continue
+                        continue  # Too high
                 if grid[origin[0]][origin[1]] != 'z' and new[0] == end[0] and new[1] == end[1]:
-                    continue
+                    continue  # Adjacent not 'z'
                 if new[0] == end[0] and new[1] == end[1]:
                     flag = False
                     result = steps
