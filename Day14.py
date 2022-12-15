@@ -11,15 +11,23 @@ def day14_first_half():
 
     min_x, max_x, min_y, max_y = min(x), max(x), min(y), max(y)
 
+    min_x = min(min_x,500-2*max_y-10)
+    max_x = max(max_x,500+2*max_y+10)
+
     start = [500 - min_x, 0]
 
     grid = []
 
-    for line in range(max_y + 1):
+    for line in range(max_y + 2):
         row = []
         for column in range(max_x - min_x + 1):
             row.append('.')
         grid.append(row)
+    row = []
+    for column in range(max_x - min_x + 1):
+        row.append('#')
+    grid.append(row)
+
 
     grid[start[1]][start[0]] = '+'
 
@@ -55,8 +63,9 @@ def day14_first_half():
     print_grid(grid)
     print(count - 1)
 
+    flag = True
 
-    while True:
+    while flag:
         try:
             count+=1
             current = start.copy()
@@ -68,12 +77,19 @@ def day14_first_half():
                 down_left = False
                 down_right = False
 
+
+
+
                 if grid[current[1] + 1][current[0]] == '#' or grid[current[1] + 1][current[0]] == 'O':
                     down = True
                 if grid[current[1] + 1][current[0] - 1] == '#' or grid[current[1] + 1][current[0] - 1] == 'O':
                     down_left = True
                 if grid[current[1] + 1][current[0] + 1] == '#' or grid[current[1] + 1][current[0] + 1] == 'O':
                     down_right = True
+
+                if current[0] == start[0] and current[1] == start[1] and down and down_left and down_right:
+                    flag = False
+                    break
 
                 if down and down_left and down_right:
                     grid[current[1]][current[0]] = 'O'
@@ -96,4 +112,4 @@ def day14_first_half():
 
 
     print_grid(grid)
-    print(count - 1)
+    print(count)
