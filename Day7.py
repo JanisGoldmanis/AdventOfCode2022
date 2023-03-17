@@ -105,27 +105,32 @@ def day7_first_half(debug=False):
 
     class Score:
         def __init__(self):
-            self.score = 0
+            self.best_score = 80000000
 
     score = Score()
 
-    def evaluate_folder(folder, score):
+    def evaluate_folder(folder, score, need_to_delete):
         for directory in folder.directories:
             if debug:
                 print(directory)
-            size = evaluate_folder(directory, score)
-            if size <= 100000:
-                score.score += size
+            size = evaluate_folder(directory, score, need_to_delete)
+            if size > need_to_delete and size < score.best_score:
+                print(f'Size: {size}, to delete: {need_to_delete}, best score: {score.best_score}')
+                score.best_score = size
         return folder.size
 
-    print('Checking size')
-    size = evaluate_folder(file_structure, score)
-    print(f'Size{size}')
-
-    print(f'result: {score.score}')
 
 
+    print(f'Total size: {file_structure.size}')
+    need_to_delete = abs(70000000 - file_structure.size - 30000000)
+    print(f'Need to delete {need_to_delete}')
 
+
+    # print('Checking size')
+    size = evaluate_folder(file_structure, score, need_to_delete)
+    # print(f'Size{size}')
+    #
+    print(f'result: {score.best_score}')
 
 
 

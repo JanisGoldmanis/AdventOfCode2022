@@ -98,6 +98,3 @@ def day18_first_half():
         result += cube.free
 
     print(result)
-
-
-
